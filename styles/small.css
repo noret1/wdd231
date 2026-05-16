@@ -111,12 +111,6 @@ h1 {
     color: #000000;
 }
 
-.profile-img {
-    max-width: 100%;
-    width: 200px;
-    height: auto;
-    border-radius: 8px;
-}
 
 .about {
     grid-template-columns: 1fr;
@@ -130,12 +124,16 @@ h1 {
     text-align: center;
 }
 .about-paragraph{
-    color: s#ffffff;
+    color: #ffffff;
 }
 
 .profile-img {
     max-width: 150px;
+    width: 200px;
+    height: auto;
+    boarder-radius: 8px;
 }
+
 
 .course-cards {
     display: grid;
@@ -208,9 +206,6 @@ footer {
 
 .about h2 {
     color: #f8f9fa;
-}
-
-.about h2 {
     display: block;
     width: 100%;
     background: #333;
@@ -225,7 +220,8 @@ footer {
     background-color: black;
     text-align: center;
 }
-.courses-container h3, p  {
+.courses-container h3,
+.courses-container p  {
     text-align: center;
 }
 .resources h2 {
