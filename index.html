@@ -1,98 +1,120 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="WDD 231 - Web Frontend Development Course Home Page - Term 6 Website">
-    <meta name="author" content="nabukenyaphiona" >
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="WDD 231 - Web Frontend Development Course Home Page - Term 6 Website"
+    />
+    <meta name="author" content="nabukenyaphiona" />
     <title>WDD 231 - Course Home Page</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet" >
-    <link rel="stylesheet" href="styles/small.css">
-    <link rel="stylesheet" href="styles/larger.css">
-    <!-- <link rel="icon" href="favicon.ico"> -->
-     <link rel="icon" href="/images/logo.svg">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles/small.css" />
+    <link rel="stylesheet" href="styles/larger.css" />
+    <link rel="icon" href="favicon.ico" />
     <script src="scripts/navigation.js" defer></script>
     <script src="scripts/date.js" defer></script>
     <script src="scripts/course.js" defer></script>
-</head>
+  </head>
 
-<body>
+  <body>
     <header>
-        <div class="header-content">
-            <div class="header-title">
-                <img src="images/logo.svg" alt="Site Logo" class="logo" >
-                <span class="name">Nabukenya Phiona</span>
-            </div>
-            <button class="hamburger" aria-label="Toggle navigation">☰</button>
+      <div class="header-content">
+        <div class="header-title">
+          <img src="images/logo.svg" alt="Site Logo" class="logo" />
+          <span class="name">Nabukenya Phiona</span>
         </div>
-        <nav>
-            <ul class="navigation">
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="chamber.html">Chamber</a></li>
-                <li><a href="final.html">Final</a></li>
-            </ul>
-        </nav>
+        <button class="hamburger" aria-label="Toggle navigation">☰</button>
+      </div>
+      <nav>
+        <ul class="navigation">
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="chamber.html">Chamber</a></li>
+          <li><a href="final.html">Final</a></li>
+        </ul>
+      </nav>
     </header>
 
     <main>
-        <h1>Home</h1>
+      <h1>Home</h1>
 
-        <section class="about">
-            <div class="about-content">
-                <h2 class="about-heading">About Me</h2>
-                <p class="about-paragraph">
-                    My name is Nabukenya Phiona, a passionate learner currently studying through BYU-Pathway Worldwide. I am a mother of two beautiful daughters and a Relief Society president. I also work with an NGO based in an HIV-focused setting. I am dedicated to growing my skills in web development and software engineering, with a strong interest in building real-world solutions that help communities. I enjoy discovering new tasks, travelling, and doing complex work that challenges me to think critically and improve every day. My goal is to become a professional developer who can build meaningful digital products that make life easier for others.
-                </p>
-            </div>
-            <div class="about-pic">
-                <h2>Student Photo</h2>
-                <img src="images/profile.jpeg" alt="Your Profile Picture" class="profile-img" >
-            </div>
-        </section>
+      <section class="about">
+        <div class="about-content">
+          <h2 class="about-heading">About Me</h2>
+          <p class="about-paragraph">
+            My name is Nabukenya Phiona, a passionate learner currently studying
+            through BYU-Pathway Worldwide. I am a mother of two beautiful
+            daughters and a Relief Society president. I also work with an NGO
+            based in an HIV-focused setting. I am dedicated to growing my skills
+            in web development and software engineering, with a strong interest
+            in building real-world solutions that help communities. I enjoy
+            discovering new tasks, travelling, and doing complex work that
+            challenges me to think critically and improve every day. My goal is
+            to become a professional developer who can build meaningful digital
+            products that make life easier for others.
+          </p>
+        </div>
+        <div class="about-pic">
+          <h2>Student Photo</h2>
+          <img
+            src="images/profile.jpeg"
+            alt="Your Profile Picture"
+            class="profile-img"
+          />
+        </div>
+      </section>
 
-        <section class="course-work">
-            <h2 class="course-heading">Web Certificte Courses</h2>
-            <div class="filter-buttons">
-                <button id="all-courses">All Courses</button>
-                <button id="wdd-courses">WDD Courses</button>
-                <button id="cse-courses">CSE Courses</button>
-            </div>
+      <section class="course-work">
+        <h2 class="course-heading">Web Certificte Courses</h2>
+        <div class="filter-buttons">
+          <button id="all-courses">All Courses</button>
+          <button id="wdd-courses">WDD Courses</button>
+          <button id="cse-courses">CSE Courses</button>
+        </div>
 
-            <div class="courses-container">
-                <div class="course-cards" id="course-cards"></div>
-                <div class="credits-total">
-                    Total Credits: <span id="total-credits">0</span>
-                </div>
-            </div>
-        </section>
+        <div class="courses-container">
+          <div class="course-cards" id="course-cards"></div>
+          <div class="credits-total">
+            Total Credits: <span id="total-credits">0</span>
+          </div>
+        </div>
+      </section>
 
-        <section class="resources">
-            <h2>Learning Resources</h2>
-            <ul class="resource-links">
-                <li><a href="https://byui.instructure.com/">Canvas</a></li>
-                <li><a href="https://www.w3schools.com/">W3Schools</a></li>
-                <li><a href="https://developer.mozilla.org/">MDN Web Docs</a></li>
-            </ul>
-        </section>
+      <section class="resources">
+        <h2>Learning Resources</h2>
+        <ul class="resource-links">
+          <li><a href="https://byui.instructure.com/">Canvas</a></li>
+          <li><a href="https://www.w3schools.com/">W3Schools</a></li>
+          <li><a href="https://developer.mozilla.org/">MDN Web Docs</a></li>
+        </ul>
+      </section>
     </main>
 
     <footer>
-        <div class="social-links">
-            <a href="https://github.com"><img src="images/github.svg" alt="Github logo" ></a>
-            <a href="https://www.linkedin.com"><img src="images/linkedin.svg" alt="Linkedin logo" ></a>
-            <a href="https://twitter.com"><img src="images/twitter.svg" alt="Twitter logo" ></a>
-        </div>
+      <div class="social-links">
+        <a href="https://github.com"
+          ><img src="images/github.svg" alt="Github logo"
+        /></a>
+        <a href="https://www.linkedin.com"
+          ><img src="images/linkedin.svg" alt="Linkedin logo"
+        /></a>
+        <a href="https://twitter.com"
+          ><img src="images/twitter.svg" alt="Twitter logo"
+        /></a>
+      </div>
 
-        <div class="footer-info">
-            <p>
-                &copy; <span id="currentyear"></span> 💚 Nabukenya Phiona💚 Uganda
-            </p>
-            <p id="lastModified"></p>
-        </div>
+      <div class="footer-info">
+        <p>
+          &copy; <span id="currentyear"></span> 💚 Nabukenya Phiona💚 Uganda
+        </p>
+        <p id="lastModified"></p>
+      </div>
     </footer>
-</body>
-
+  </body>
 </html>
