@@ -1,9 +1,9 @@
 [
     {
-        "name": "Sahara Trade Imports",
-        "address": "45 Market Square, Timbuktu Central",
-        "phone": "(555) 234-5678",
-        "email": "contact@saharatrade.tk",
+        "name": "Uganda coffee factory ltd",
+        "address": "Bweyogerere,kireka zone,plot246kampala",
+        "phone": "(256) 749358888",
+        "email": "nabukenyaphiona3@gmail.com",
         "website": "https://saharatrade.example.com",
         "image": "1.jpg",
         "membershipLevel": 3,
@@ -12,24 +12,24 @@
     },
     {
         "name": "Timbuktu Tech Solutions",
-        "address": "12 Innovation Drive, Tech Park",
-        "phone": "(555) 345-6789",
-        "email": "support@timbuktutech.tk",
-        "website": "https://timbuktutech.example.com",
+        "address": "Nateete,kigagga zone",
+        "phone": "(256) 776202420",
+        "email": "althawabjariyah@gmail.com",
+        "website": "https://althawabjariyah.example.com",
         "image": "2.jpg",
         "membershipLevel": 2,
         "description": "Comprehensive IT services and digital transformation solutions",
         "hours": "24/7 Support Available"
     },
     {
-        "name": "Desert Bloom Cafe",
+        "name": "olam Cofffe",
         "address": "8 Oasis Lane, Downtown Timbuktu",
         "phone": "(555) 456-7890",
         "email": "hello@desertbloom.tk",
-        "website": "https://desertbloom.example.com",
+        "website": "https://olamnline.com",
         "image": "3.jpg",
         "membershipLevel": 1,
-        "description": "Artisan coffee and local cuisine in a welcoming atmosphere",
+        "description": "Ugandan coffee and local cuisine in a welcoming atmosphere",
         "hours": "Daily: 6AM-10PM"
     },
     {
