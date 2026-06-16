@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "name": "Spanner Set",
+    "category": "hand",
+    "price": 35000,
+    "description": "Used for tightening and loosening bolts and nuts of different sizes.",
+    "usage": "General mechanical repairs and engine work"
+  },
+  {
+    "id": 2,
+    "name": "Socket Wrench Set",
+    "category": "hand",
+    "price": 85000,
+    "description": "A ratcheting tool with interchangeable sockets for fast bolt removal.",
+    "usage": "Engine and suspension repair"
+  },
+  {
+    "id": 3,
+    "name": "Screwdriver Kit",
+    "category": "hand",
+    "price": 25000,
+    "description": "Flathead and Phillips screwdrivers for various fastening tasks.",
+    "usage": "Interior and engine component assembly"
+  },
+  {
+    "id": 4,
+    "name": "Hydraulic Jack",
+    "category": "lifting",
+    "price": 180000,
+    "description": "Used to lift vehicles off the ground for repair work.",
+    "usage": "Tire replacement and underbody inspection"
+  },
+  {
+    "id": 5,
+    "name": "Car Lift (2-post)",
+    "category": "lifting",
+    "price": 3500000,
+    "description": "Professional lift used to raise entire vehicles safely.",
+    "usage": "Full vehicle servicing"
+  },
+  {
+    "id": 6,
+    "name": "OBD2 Scanner",
+    "category": "diagnostic",
+    "price": 220000,
+    "description": "Reads engine error codes from vehicle ECU.",
+    "usage": "Engine diagnostics and fault detection"
+  },
+  {
+    "id": 7,
+    "name": "Multimeter",
+    "category": "diagnostic",
+    "price": 65000,
+    "description": "Measures voltage, current, and resistance in electrical systems.",
+    "usage": "Electrical troubleshooting"
+  },
+  {
+    "id": 8,
+    "name": "Air Compressor",
+    "category": "diagnostic",
+    "price": 450000,
+    "description": "Provides compressed air for pneumatic tools and tire inflation.",
+    "usage": "Tire inflation and air tools"
+  },
+  {
+    "id": 9,
+    "name": "Torque Wrench",
+    "category": "hand",
+    "price": 120000,
+    "description": "Ensures bolts are tightened to manufacturer specifications.",
+    "usage": "Engine assembly and wheel installation"
+  },
+  {
+    "id": 10,
+    "name": "Impact Wrench",
+    "category": "hand",
+    "price": 200000,
+    "description": "High torque tool for removing stubborn bolts quickly.",
+    "usage": "Tire and suspension work"
+  },
+  {
+    "id": 11,
+    "name": "Engine Hoist",
+    "category": "lifting",
+    "price": 950000,
+    "description": "Used to lift engines out of vehicles safely.",
+    "usage": "Engine removal and installation"
+  },
+  {
+    "id": 12,
+    "name": "Fuel Pressure Tester",
+    "category": "diagnostic",
+    "price": 110000,
+    "description": "Checks fuel system pressure for proper engine performance.",
+    "usage": "Fuel system diagnostics"
+  },
+  {
+    "id": 13,
+    "name": "Pliers Set",
+    "category": "hand",
+    "price": 40000,
+    "description": "Used for gripping, bending, and cutting wires.",
+    "usage": "Electrical and mechanical work"
+  },
+  {
+    "id": 14,
+    "name": "Timing Light",
+    "category": "diagnostic",
+    "price": 90000,
+    "description": "Used to set ignition timing in engines.",
+    "usage": "Engine tuning"
+  },
+  {
+    "id": 15,
+    "name": "Oil Filter Wrench",
+    "category": "hand",
+    "price": 30000,
+    "description": "Used to remove and install oil filters.",
+    "usage": "Oil change service"
+  }
+]
