@@ -1,122 +1,155 @@
 [
   {
     "id": 1,
-    "name": "Spanner Set",
+    "name": "Socket Wrench Set",
     "category": "hand",
-    "price": 35000,
-    "description": "Used for tightening and loosening bolts and nuts of different sizes.",
-    "usage": "General mechanical repairs and engine work"
+    "price": 250000,
+    "description": "Essential set of sockets and wrenches for removing and tightening nuts and bolts. Includes metric and imperial sizes.",
+    "usage": "Used for fastening and loosening bolts in engine repair and general maintenance.",
+    "safety": "Ensure sockets are properly seated to avoid rounding bolts."
   },
   {
     "id": 2,
-    "name": "Socket Wrench Set",
-    "category": "hand",
-    "price": 85000,
-    "description": "A ratcheting tool with interchangeable sockets for fast bolt removal.",
-    "usage": "Engine and suspension repair"
+    "name": "OBD-II Diagnostic Scanner",
+    "category": "diagnostic",
+    "price": 450000,
+    "description": "Professional diagnostic tool that reads and clears trouble codes from vehicle computer systems. Displays live data streams.",
+    "usage": "Plug into OBD-II port under dashboard to retrieve error codes and monitor engine parameters.",
+    "safety": "Always ensure engine is off when connecting the scanner."
   },
   {
     "id": 3,
-    "name": "Screwdriver Kit",
-    "category": "hand",
-    "price": 25000,
-    "description": "Flathead and Phillips screwdrivers for various fastening tasks.",
-    "usage": "Interior and engine component assembly"
+    "name": "Hydraulic Floor Jack",
+    "category": "lifting",
+    "price": 350000,
+    "description": "Heavy-duty hydraulic jack capable of lifting vehicles up to 3 tons. Provides stable lifting for maintenance work.",
+    "usage": "Position under vehicle frame and pump handle to lift for tire changes or undercarriage access.",
+    "safety": "Always use jack stands after lifting. Never work under a vehicle supported only by a jack."
   },
   {
     "id": 4,
-    "name": "Hydraulic Jack",
-    "category": "lifting",
+    "name": "Torque Wrench",
+    "category": "hand",
     "price": 180000,
-    "description": "Used to lift vehicles off the ground for repair work.",
-    "usage": "Tire replacement and underbody inspection"
+    "description": "Precision tool for applying specific torque to fasteners. Prevents over-tightening or under-tightening critical bolts.",
+    "usage": "Set desired torque value and tighten bolts until the wrench clicks. Essential for cylinder head and wheel bolts.",
+    "safety": "Release tension after each use to maintain calibration accuracy."
   },
   {
     "id": 5,
-    "name": "Car Lift (2-post)",
-    "category": "lifting",
-    "price": 3500000,
-    "description": "Professional lift used to raise entire vehicles safely.",
-    "usage": "Full vehicle servicing"
+    "name": "Multimeter",
+    "category": "diagnostic",
+    "price": 120000,
+    "description": "Digital multimeter for measuring voltage, resistance, and continuity in automotive electrical systems.",
+    "usage": "Test battery voltage, check sensor resistance, and diagnose electrical faults.",
+    "safety": "Never measure resistance on live circuits to protect the meter."
   },
   {
     "id": 6,
-    "name": "OBD2 Scanner",
-    "category": "diagnostic",
-    "price": 220000,
-    "description": "Reads engine error codes from vehicle ECU.",
-    "usage": "Engine diagnostics and fault detection"
+    "name": "Engine Hoist",
+    "category": "lifting",
+    "price": 850000,
+    "description": "Hydraulic engine hoist for safely removing and installing engines. Capacity up to 2 tons.",
+    "usage": "Attach lifting chains to engine mounting points and pump to raise or lower.",
+    "safety": "Ensure all chains are secure before lifting. Never exceed rated capacity."
   },
   {
     "id": 7,
-    "name": "Multimeter",
-    "category": "diagnostic",
-    "price": 65000,
-    "description": "Measures voltage, current, and resistance in electrical systems.",
-    "usage": "Electrical troubleshooting"
+    "name": "Screwdriver Set",
+    "category": "hand",
+    "price": 75000,
+    "description": "Complete set of flat-head and Phillips screwdrivers in various sizes for general workshop use.",
+    "usage": "Used for removing and installing screws on interior panels, trim, and small components.",
+    "safety": "Choose the correct tip size to avoid stripping screw heads."
   },
   {
     "id": 8,
-    "name": "Air Compressor",
+    "name": "Compression Tester",
     "category": "diagnostic",
-    "price": 450000,
-    "description": "Provides compressed air for pneumatic tools and tire inflation.",
-    "usage": "Tire inflation and air tools"
+    "price": 150000,
+    "description": "Tool for measuring engine cylinder compression to diagnose internal engine issues.",
+    "usage": "Thread into spark plug hole and crank engine to measure compression in each cylinder.",
+    "safety": "Disable fuel and ignition systems before testing to prevent accidental starting."
   },
   {
     "id": 9,
-    "name": "Torque Wrench",
-    "category": "hand",
-    "price": 120000,
-    "description": "Ensures bolts are tightened to manufacturer specifications.",
-    "usage": "Engine assembly and wheel installation"
+    "name": "Vehicle Ramps",
+    "category": "lifting",
+    "price": 200000,
+    "description": "Steel ramps for driving vehicles onto for elevated access. Suitable for oil changes and inspections.",
+    "usage": "Position ramps in front of tires and drive vehicle slowly onto them.",
+    "safety": "Chock rear wheels and engage parking brake before working under vehicle."
   },
   {
     "id": 10,
-    "name": "Impact Wrench",
+    "name": "Pliers Set",
     "category": "hand",
-    "price": 200000,
-    "description": "High torque tool for removing stubborn bolts quickly.",
-    "usage": "Tire and suspension work"
+    "price": 95000,
+    "description": "Assorted pliers including needle-nose, slip-joint, and locking pliers for gripping and bending.",
+    "usage": "Used for holding components, bending metal, and securing fasteners.",
+    "safety": "Use the right plier type for the job to prevent slipping."
   },
   {
     "id": 11,
-    "name": "Engine Hoist",
-    "category": "lifting",
-    "price": 950000,
-    "description": "Used to lift engines out of vehicles safely.",
-    "usage": "Engine removal and installation"
+    "name": "Smoke Machine",
+    "category": "diagnostic",
+    "price": 550000,
+    "description": "Diagnostic tool that generates smoke vapor to detect vacuum and exhaust leaks in engine systems.",
+    "usage": "Connect to intake or exhaust system and watch for smoke escaping from leaks.",
+    "safety": "Allow engine to cool before connecting smoke machine."
   },
   {
     "id": 12,
-    "name": "Fuel Pressure Tester",
-    "category": "diagnostic",
-    "price": 110000,
-    "description": "Checks fuel system pressure for proper engine performance.",
-    "usage": "Fuel system diagnostics"
+    "name": "Transmission Jack",
+    "category": "lifting",
+    "price": 400000,
+    "description": "Specialized jack designed for safely removing and installing transmissions.",
+    "usage": "Position under transmission, strap securely, and adjust height for alignment.",
+    "safety": "Always use safety straps to prevent transmission from falling."
   },
   {
     "id": 13,
-    "name": "Pliers Set",
+    "name": "Impact Wrench",
     "category": "hand",
-    "price": 40000,
-    "description": "Used for gripping, bending, and cutting wires.",
-    "usage": "Electrical and mechanical work"
+    "price": 320000,
+    "description": "High-torque pneumatic or electric tool for quick removal of wheel nuts and stubborn bolts.",
+    "usage": "Apply to fastener and allow torque to loosen or tighten quickly.",
+    "safety": "Use impact-rated sockets only to prevent shattering."
   },
   {
     "id": 14,
     "name": "Timing Light",
     "category": "diagnostic",
-    "price": 90000,
-    "description": "Used to set ignition timing in engines.",
-    "usage": "Engine tuning"
+    "price": 160000,
+    "description": "Inductive timing light for checking and adjusting ignition timing on older vehicles.",
+    "usage": "Connect to battery and spark plug wire, shine at timing marks while engine runs.",
+    "safety": "Keep hands away from moving belts and fans while testing."
   },
   {
     "id": 15,
-    "name": "Oil Filter Wrench",
+    "name": "Jack Stands",
+    "category": "lifting",
+    "price": 180000,
+    "description": "Pair of adjustable jack stands for safely supporting vehicles during maintenance.",
+    "usage": "Place under vehicle frame after lifting with a jack, adjust height for secure support.",
+    "safety": "Always use jack stands as secondary support. Never work under vehicle without them."
+  },
+  {
+    "id": 16,
+    "name": "Brake Bleeder Kit",
     "category": "hand",
-    "price": 30000,
-    "description": "Used to remove and install oil filters.",
-    "usage": "Oil change service"
+    "price": 110000,
+    "description": "One-man brake bleeding system for removing air from hydraulic brake lines.",
+    "usage": "Attach to bleeder screw, open valve, and pump brake pedal to expel old fluid.",
+    "safety": "Use proper brake fluid type for your vehicle. Dispose of old fluid responsibly."
+  },
+  {
+    "id": 17,
+    "name": "Spark Plug Tester",
+    "category": "diagnostic",
+    "price": 85000,
+    "description": "Quick diagnostic tool to verify spark plug ignition and spark strength.",
+    "usage": "Connect between spark plug wire and plug, crank engine to check spark.",
+    "safety": "Disconnect fuel pump to prevent flooding during testing."
   }
 ]

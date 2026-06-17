@@ -12,31 +12,30 @@
 
     <!-- Open Graph -->
     <meta property="og:title" content="Workshop Tools - Automobile Mechanic Learning Hub">
-    <meta property="og:description" content="Learn about essential automotive workshop tools and their practical use in vehicle repair and maintenance.">
-    <meta property="og:image" content="https://noret1.github.io/wdd231/FINAL/images/workshop-tools.jpg">
-    <meta property="og:url" content="https://noret1.github.io/wdd231/FINAL/workshop-tools.html">
+    <meta property="og:description" content="Learn about essential automotive workshop tools including hand tools, diagnostic equipment, and lifting devices used by professional mechanics.">
+    <meta property="og:image" content="https://noret1.github.io/wdd231/final/images/workshop-tools.jpg">
+    <meta property="og:url" content="https://noret1.github.io/wdd231/final/workshop-tools.html">
     <meta property="og:type" content="website">
 
     <!-- Favicon -->
     <link rel="icon" href="favicon.ico">
 
     <!-- CSS -->
-    <link rel="stylesheet" href="styles/base.css">
-    <link rel="stylesheet" href="styles/large.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/large.css">
 
-    <!-- Font Awesome (optional icons) -->
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
     <!-- JS -->
-    <script src="scripts/main.js" defer></script>
-    <script type="module" src="scripts/tools.js" defer></script>
+    <script type="module" src="js/tools.js" defer></script>
 </head>
 
 <body>
 
 <header>
     <div class="logo-container">
-        <i class="fa-solid fa-screwdriver-wrench"></i>
+        <img src="images/logo.webp" alt="Automobile Mechanic Learning Hub Logo" width="80" height="80">
         <div>
             <h1>Workshop Tools</h1>
             <p>Automobile Mechanic Learning Hub</p>
@@ -59,7 +58,7 @@
     <!-- HERO -->
     <section class="hero">
         <img src="images/workshop-tools.jpg"
-             alt="Automotive workshop tools"
+             alt="Collection of automotive workshop tools arranged on a workbench">
              loading="eager"
              width="1200"
              height="500">
@@ -89,7 +88,7 @@
         <h2>Filter Tools</h2>
 
         <div class="filter-buttons">
-            <button data-filter="all">All</button>
+            <button data-filter="all" class="filter-active">All</button>
             <button data-filter="hand">Hand Tools</button>
             <button data-filter="diagnostic">Diagnostic</button>
             <button data-filter="lifting">Lifting</button>
@@ -119,7 +118,7 @@
 <footer>
 
     <p>
-            &copy; <span id="currentYear"></span>
+        &copy; <span id="currentYear"></span>
         Automobile Mechanic Learning Hub
     </p>
 
@@ -138,7 +137,7 @@
         </a>
     </p>
 
-    </footer>
+</footer>
 
 </body>
 </html>

@@ -12,121 +12,120 @@
 
     <!-- Open Graph -->
     <meta property="og:title" content="Engine Systems - Automobile Mechanic Learning Hub">
-    <meta property="og:description" content="Understand how automobile engine systems work through practical learning and interactive examples.">
-    <meta property="og:image" content="https://noret1.github.io/wdd231/FINAL/images/engine-system.webp">
-    <meta property="og:url" content="https://noret1.github.io/wdd231/FINAL/engine-systems.html">
+    <meta property="og:description" content="Understand how automobile engine systems like cooling, lubrication, fuel, ignition, and exhaust work together to power vehicles.">
+    <meta property="og:image" content="https://noret1.github.io/wdd231/final/images/engine-systems.jpg"> 
+    <meta property="og:url" content="https://noret1.github.io/wdd231/final/engine-systems.html">
     <meta property="og:type" content="website">
 
     <!-- Favicon -->
     <link rel="icon" href="favicon.ico">
 
     <!-- CSS -->
-    <link rel="stylesheet" href="styles/base.css">
-    <link rel="stylesheet" href="styles/large.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/large.css">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
-    <!-- JavaScript -->
-    <script src="scripts/main.js" defer></script>
-    <script type="module" src="scripts/tools.js" defer></script>
+    <!-- JS -->
+    <script type="module" src="js/tools.js" defer></script>
 </head>
 
 <body>
 
-    <header>
-        <div class="logo-container">
-            <i class="fa-solid fa-screwdriver-wrench"></i>
-            <div>
-                <h1>Engine Systems</h1>
-                <p>Automobile Mechanic Learning Hub</p>
-            </div>
+<header>
+    <div class="logo-container">
+        <img src="images/logo.webp" alt="Automobile Mechanic Learning Hub Logo" width="80" height="80">
+        <div>
+            <h1>Engine Systems</h1>
+            <p>Automobile Mechanic Learning Hub</p>
         </div>
+    </div>
 
-        <button id="menuButton" aria-label="Open Navigation Menu">☰</button>
+    <button id="menuButton" aria-label="Open Navigation Menu">☰</button>
 
-        <nav id="mainNav">
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="engine-systems.html" class="active">Engine Systems</a></li>
-                <li><a href="workshop-tools.html">Workshop Tools</a></li>
-            </ul>
-        </nav>
-    </header>
+    <nav id="mainNav">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="engine-systems.html" class="active">Engine Systems</a></li>
+            <li><a href="workshop-tools.html">Workshop Tools</a></li>
+        </ul>
+    </nav>
+</header>
 
-    <main>
+<main>
 
-        <!-- HERO SECTION -->
-        <section class="hero">
-            <img src="images/engine-systems.jpg"
-                 alt="Comprehensive car engine system diagram showing internal components"
-                 loading="eager"
-                 width="1000"
-                 height="500">
+    <!-- HERO -->
+    <section class="hero">
+        <img src="images/engine-systems.jpg" alt="Diagram showing different engine systems including cooling, fuel, and exhaust"
+             alt="Diagram showing different engine systems including cooling, fuel, and exhaust">
+             loading="eager"
+             width="1000"
+             height="500">
 
-            <div class="hero-content">
-                <h2>Understand Engine Systems</h2>
-                <p>
-                    Explore how different engine systems work together
-                    to power modern vehicles.
-                </p>
-            </div>
-        </section>
-
-        <!-- INTRO SECTION -->
-        <section class="about">
-            <h2>Engine Systems Overview</h2>
-
+        <div class="hero-content">
+            <h2>Understand Engine Systems</h2>
             <p>
-                An automobile engine is made up of multiple systems that work together.
-                These include cooling, lubrication, fuel, ignition, air intake, and exhaust systems.
-                Each system plays a critical role in ensuring smooth engine performance.
+                Explore how different engine systems work together
+                to power modern vehicles.
             </p>
-        </section>
+        </div>
+    </section>
 
-        <!-- SYSTEMS LIST -->
-        <section class="engine-list">
-            <h2>Engine System Components</h2>
-
-            <div id="engineContainer" class="tool-grid">
-                <!-- JavaScript fetches and inserts 15+ engine system items here -->
-            </div>
-        </section>
-
-        <!-- MODAL -->
-        <dialog id="systemModal">
-            <button id="closeModal" aria-label="Close Modal">✕</button>
-
-            <div id="modalContent">
-                <!-- JavaScript loads dynamic content -->
-            </div>
-        </dialog>
-
-    </main>
-
-    <footer>
+    <!-- INTRO -->
+    <section class="about">
+        <h2>Engine Systems Overview</h2>
 
         <p>
-            &copy; <span id="currentYear"></span>
-            Automobile Mechanic Learning Hub
+            An automobile engine is made up of multiple systems that work together.
+            These include cooling, lubrication, fuel, ignition, air intake, and exhaust systems.
+            Each system plays a critical role in ensuring smooth engine performance.
         </p>
+    </section>
 
-        <p>
-            Last Modified:
-            <span id="lastModified"></span>
-        </p>
+    <!-- SYSTEMS LIST (15+ ITEMS FROM JSON) -->
+    <section class="engine-list">
+        <h2>Engine System Components</h2>
 
-        <p>
-            <a href="attributions.html">Attributions</a>
-        </p>
+        <div id="engineContainer" class="tool-grid">
+            <!-- JavaScript fetches and inserts 15+ engine system items here -->
+        </div>
+    </section>
 
-        <p>
-            <a href="https://youtube.com/" target="_blank">
-                Project Demonstration Video
-            </a>
-        </p>
+    <!-- MODAL -->
+    <dialog id="systemModal">
+        <button id="closeModal" aria-label="Close Modal">✕</button>
 
-    </footer>
+        <div id="modalContent">
+            <!-- JS dynamic content -->
+        </div>
+    </dialog>
+
+</main>
+
+<footer>
+
+    <p>
+        &copy; <span id="currentYear"></span>
+        Automobile Mechanic Learning Hub
+    </p>
+
+    <p>
+        Last Modified:
+        <span id="lastModified"></span>
+    </p>
+
+    <p>
+        <a href="attributions.html">Attributions</a>
+    </p>
+
+    <p>
+        <a href="https://youtube.com/" target="_blank">
+            Project Demonstration Video
+        </a>
+    </p>
+
+</footer>
 
 </body>
 </html>

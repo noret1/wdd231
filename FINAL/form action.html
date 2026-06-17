@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Form Submitted | Automobile Mechanic Learning Hub</title>
+
+    <meta name="description" content="Confirmation page for submitted form responses in the Automobile Mechanic Learning Hub project.">
+    <meta name="author" content="NABUKENYA PHIONA">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Form Submitted - Automobile Mechanic Learning Hub">
+    <meta property="og:description" content="Thank you for submitting your form. Your learning community registration is confirmed.">
+    <meta property="og:image" content="https://noret1.github.io/wdd231/final/images/logo.webp">
+    <meta property="og:url" content="https://noret1.github.io/wdd231/finalproject/form-action.html">
+    <meta property="og:type" content="website">
+
+    <link rel="icon" href="favicon.ico">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/large.css">
+</head>
+<body>
+
+<header>
+    <div class="logo-container">
+        <img src="images/logo.webp" alt="Automobile Mechanic Learning Hub Logo" width="80" height="80">
+        <div>
+            <h1>Form Submission</h1>
+            <p>Automobile Mechanic Learning Hub</p>
+        </div>
+    </div>
+
+    <button id="menuButton" aria-label="Open Navigation Menu">☰</button>
+
+    <nav id="mainNav">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="engine-systems.html">Engine Systems</a></li>
+            <li><a href="workshop-tools.html">Workshop Tools</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <section class="about">
+        <h1>Submission Received</h1>
+        <p>Thank you for submitting your form response.</p>
+    </section>
+
+    <section class="form-data">
+        <h2>Your Submitted Information</h2>
+        <div id="formData" class="data-display">
+            <!-- JavaScript will populate this -->
+        </div>
+        <p><a href="index.html">← Return to Home</a></p>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; <span id="currentYear"></span> Automobile Mechanic Learning Hub</p>
+    <p>Last Modified: <span id="lastModified"></span></p>
+    <p><a href="attributions.html">Attributions</a></p>
+</footer>
+
+<script>
+    // Display form data from URL parameters
+    const params = new URLSearchParams(window.location.search);
+    const formData = document.getElementById('formData');
+
+    const fullname = params.get('fullname') || 'Not provided';
+    const email = params.get('email') || 'Not provided';
+    const interest = params.get('interest') || 'Not provided';
+    const comments = params.get('comments') || 'None';
+
+    // Format interest label for display
+    const interestLabels = {
+        'engine-systems': 'Engine Systems',
+        'diagnostics': 'Diagnostics',
+        'workshop-tools': 'Workshop Tools',
+        'vehicle-maintenance': 'Vehicle Maintenance'
+    };
+    const displayInterest = interestLabels[interest] || interest;
+
+    formData.innerHTML = `
+        <div class="data-item">
+            <strong>Full Name:</strong>
+            <span>${fullname}</span>
+        </div>
+        <div class="data-item">
+            <strong>Email Address:</strong>
+            <span>${email}</span>
+        </div>
+        <div class="data-item">
+            <strong>Training Interest:</strong>
+            <span>${displayInterest}</span>
+        </div>
+        <div class="data-item">
+            <strong>Comments:</strong>
+            <span>${comments}</span>
+        </div>
+    `;
+
+    // Footer dates
+    document.getElementById("currentYear").textContent = new Date().getFullYear();
+    document.getElementById("lastModified").textContent = document.lastModified;
+
+    // Menu toggle
+    const menuButton = document.querySelector("#menuButton");
+    const mainNav = document.querySelector("#mainNav");
+
+    if (menuButton && mainNav) {
+        menuButton.addEventListener("click", () => {
+            mainNav.classList.toggle("open");
+        });
+    }
+</script>
+
+</body>
+</html>

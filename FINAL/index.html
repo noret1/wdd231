@@ -4,113 +4,184 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Workshop Tools | Automobile Mechanic Learning Hub</title>
+    <title>Automobile Mechanic Learning Hub | Home</title>
 
-    <meta name="description" content="Explore essential automobile workshop tools used by professional mechanics, including their functions, costs, and usage in vehicle repair.">
+    <meta name="description" content="Learn automobile mechanics, engine systems, and workshop tools through practical resources, guides, and interactive content.">
 
     <meta name="author" content="NABUKENYA PHIONA">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Workshop Tools - Automobile Mechanic Learning Hub">
-    <meta property="og:description" content="Learn about essential automotive workshop tools and their practical use in vehicle repair and maintenance.">
-    <meta property="og:image" content="https://noret1.github.io/wdd231/FINAL/images/workshop-tools.jpg">
-    <meta property="og:url" content="https://noret1.github.io/wdd231/FINAL/index.html">
+    <meta property="og:title" content="Automobile Mechanic Learning Hub - Learn Auto Repair">
+    <meta property="og:description" content="Master automobile engine systems and workshop tools with interactive learning resources for mechanic students.">
+    <meta property="og:image" content="https://noret1.github.io/wdd231/final/images/mechanic-workshop.webp">
+    <meta property="og:url" content="https://noret1.github.io/wdd231/final/">
     <meta property="og:type" content="website">
 
     <!-- Favicon -->
     <link rel="icon" href="favicon.ico">
 
     <!-- CSS -->
-    <link rel="stylesheet" href="styles/base.css">
-    <link rel="stylesheet" href="styles/large.css">
-
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/large.css">
 
     <!-- JavaScript -->
-    <script src="scripts/main.js" defer></script>
-    <script type="module" src="scripts/tools.js" defer></script>
+    <script type="module" src="js/main.js" defer></script>
 </head>
 
 <body>
 
     <header>
         <div class="logo-container">
-            <i class="fa-solid fa-screwdriver-wrench"></i>
+            <img src="images/logo.webp" alt="Automobile Mechanic Learning Hub Logo" width="80" height="80">
             <div>
-                <h1>Workshop Tools</h1>
-                <p>Automobile Mechanic Learning Hub</p>
+                <h1>Automobile Mechanic Learning Hub</h1>
+                <p>Learn • Practice • Repair</p>
             </div>
         </div>
 
-        <button id="menuButton" aria-label="Open Navigation Menu">☰</button>
+        <button id="menuButton" aria-label="Open Navigation Menu">
+            ☰
+        </button>
 
         <nav id="mainNav">
             <ul>
-                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html" class="active">Home</a></li>
                 <li><a href="engine-systems.html">Engine Systems</a></li>
-                <li><a href="workshop-tools.html" class="active">Workshop Tools</a></li>
+                <li><a href="workshop-tools.html">Workshop Tools</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
 
-        <!-- HERO SECTION -->
         <section class="hero">
-            <img src="images/workshop-tools.jpg"
-                 alt="Automotive workshop tools arranged on a workbench"
-                 loading="eager"
-                 width="1200"
-                 height="500">
+            <picture>
+                <img
+                    src="images/mechanic-workshop.webp"
+                    alt="Automobile mechanic working on an engine in a workshop"
+                    loading="eager"
+                    width="1200"
+                    height="600">
+            </picture>
 
             <div class="hero-content">
-                <h2>Essential Workshop Tools</h2>
+                <h2>Welcome to the Automobile Mechanic Learning Hub</h2>
                 <p>
-                    Discover the tools used by professional mechanics for
-                    diagnostics, repair, and maintenance.
+                    Explore engine systems, workshop tools, and practical
+                    automotive knowledge designed for mechanic students.
                 </p>
             </div>
         </section>
 
-        <!-- INTRO SECTION -->
         <section class="about">
-            <h2>Workshop Tools Overview</h2>
+            <h2>About This Site</h2>
 
             <p>
-                Automotive workshops rely on specialized tools for safe and efficient
-                vehicle repair. These include hand tools, diagnostic tools, lifting equipment,
-                and precision instruments.
+                The Automobile Mechanic Learning Hub provides educational
+                resources for students interested in automobile maintenance,
+                diagnostics, and repair. The site contains information about
+                engine systems and workshop tools commonly used by mechanics.
             </p>
         </section>
 
-        <!-- FILTER SECTION -->
-        <section class="filters">
-            <h2>Filter Tools</h2>
+        <section class="highlights">
+            <h2>What You Will Learn</h2>
 
-            <div class="filter-buttons">
-                <button data-filter="all" class="active">All</button>
-                <button data-filter="hand">Hand Tools</button>
-                <button data-filter="diagnostic">Diagnostic</button>
-                <button data-filter="lifting">Lifting</button>
+            <div class="card-container">
+
+                <article class="card">
+                    <h3>Engine Systems</h3>
+                    <p>
+                        Learn how cooling, lubrication, fuel, ignition,
+                        and exhaust systems work together.
+                    </p>
+                    <a href="engine-systems.html" class="card-link">Learn More →</a>
+                </article>
+
+                <article class="card">
+                    <h3>Workshop Tools</h3>
+                    <p>
+                        Explore the essential tools used by professional
+                        mechanics in automotive workshops.
+                    </p>
+                    <a href="workshop-tools.html" class="card-link">Learn More →</a>
+                </article>
+
+                <article class="card">
+                    <h3>Practical Skills</h3>
+                    <p>
+                        Develop the knowledge required for vehicle
+                        inspection, maintenance, and repair.
+                    </p>
+                </article>
+
             </div>
         </section>
 
-        <!-- TOOLS LIST -->
-        <section class="tools">
-            <h2>Tools List</h2>
+        <section class="featured-tools">
+            <h2>Featured Workshop Tools</h2>
 
-            <div id="toolsContainer" class="tool-grid">
-                <!-- JavaScript injects 15+ tool cards here -->
+            <div id="featuredTools" class="tool-grid">
+                <!-- JavaScript inserts cards here -->
             </div>
         </section>
 
-        <!-- MODAL -->
+        <section class="student-form">
+            <h2>Join Our Learning Community</h2>
+
+            <form method="get" action="form-action.html">
+
+                <label>
+                    Full Name
+                    <input
+                        type="text"
+                        name="fullname"
+                        required
+                        autocomplete="name"
+                        placeholder="Enter your full name">
+                </label>
+
+                <label>
+                    Email Address
+                    <input
+                        type="email"
+                        name="email"
+                        required
+                        autocomplete="email"
+                        placeholder="Enter your email address">
+                </label>
+
+                <label>
+                    Training Interest
+                    <select name="interest" required>
+                        <option value="">Select One</option>
+                        <option value="engine-systems">Engine Systems</option>
+                        <option value="diagnostics">Diagnostics</option>
+                        <option value="workshop-tools">Workshop Tools</option>
+                        <option value="vehicle-maintenance">Vehicle Maintenance</option>
+                    </select>
+                </label>
+
+                <label>
+                    Comments
+                    <textarea
+                        name="comments"
+                        rows="5"
+                        placeholder="Any additional questions or comments?"></textarea>
+                </label>
+
+                <input type="submit" value="Submit">
+            </form>
+        </section>
+
+        <!-- Accessible Modal -->
         <dialog id="toolModal">
-            <button id="closeModal" aria-label="Close Modal">✕</button>
+            <button id="closeModal" aria-label="Close Modal">
+                ✕
+            </button>
 
             <div id="modalContent">
-                <!-- JavaScript loads tool details here -->
+                <!-- JS loads content -->
             </div>
         </dialog>
 

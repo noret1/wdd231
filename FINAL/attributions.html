@@ -10,32 +10,35 @@
 
     <meta name="author" content="NABUKENYA PHIONA">
 
+    <!-- Open Graph -->
+    <meta property="og:title" content="Attributions - Automobile Mechanic Learning Hub">
+    <meta property="og:description" content="Credits and sources for images, icons, and content used in the Automobile Mechanic Learning Hub project.">
+    <meta property="og:image" content="https://noret1.github.io/wdd231/final/images/logo.webp">
+    <meta property="og:url" content="https://noret1.github.io/wdd231/final/attributions.html">
+    <meta property="og:type" content="website">
+
     <!-- Favicon -->
     <link rel="icon" href="favicon.ico">
 
     <!-- CSS -->
-    <link rel="stylesheet" href="styles/base.css">
-    <link rel="stylesheet" href="styles/large.css">
-
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-
-    <!-- JavaScript -->
-    <script src="scripts/main.js" defer></script>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/large.css">
 </head>
 
 <body>
 
 <header>
     <div class="logo-container">
-        <i class="fa-solid fa-screwdriver-wrench"></i>
+        <img src="images/logo.webp" alt="Automobile Mechanic Learning Hub Logo" width="80" height="80">
         <div>
             <h1>Attributions</h1>
             <p>Sources and Credits</p>
         </div>
     </div>
 
-    <nav>
+    <button id="menuButton" aria-label="Open Navigation Menu">☰</button>
+
+    <nav id="mainNav">
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="engine-systems.html">Engine Systems</a></li>
@@ -52,6 +55,7 @@
         <ul>
             <li>Workshop and mechanic images sourced from <a href="https://unsplash.com" target="_blank">Unsplash</a></li>
             <li>Additional automotive images sourced from <a href="https://www.pexels.com" target="_blank">Pexels</a></li>
+            <li>All images have been optimized for web use</li>
         </ul>
     </section>
 
@@ -69,6 +73,7 @@
         <ul>
             <li>Workshop tool descriptions created for educational purposes</li>
             <li>Engine system content based on general automotive engineering knowledge</li>
+            <li>Tool specifications and pricing are for illustrative purposes only</li>
         </ul>
     </section>
 
@@ -96,7 +101,22 @@
         <span id="lastModified"></span>
     </p>
 
+    <p>
+        <a href="attributions.html">Attributions</a>
+    </p>
+
+    <p>
+        <a href="https://youtube.com/" target="_blank">
+            Project Demonstration Video
+        </a>
+    </p>
+
 </footer>
+
+<script>
+    document.getElementById("currentYear").textContent = new Date().getFullYear();
+    document.getElementById("lastModified").textContent = document.lastModified;
+</script>
 
 </body>
 </html>
