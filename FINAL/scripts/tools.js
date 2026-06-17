@@ -18,7 +18,7 @@ let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
 -------------------------- */
 async function getTools() {
     try {
-        const response = await fetch("data/tools.json");
+        const response = await fetch("DATA/tools.json");
 
         if (!response.ok) {
             throw new Error("Failed to load tools data");
@@ -151,7 +151,7 @@ function saveFavorite(id) {
 async function init() {
 
     try {
-        const response = await fetch("data/tools.json");
+        const response = await fetch("DATA/tools.json");
 
         if (!response.ok) {
             throw new Error("Failed to initialize data");
@@ -171,24 +171,6 @@ async function init() {
 }
 
 /* -------------------------
-   FOOTER DATES (INDEX SUPPORT)
--------------------------- */
-function setFooter() {
-
-    const year = document.querySelector("#currentYear");
-    const modified = document.querySelector("#lastModified");
-
-    if (year) {
-        year.textContent = new Date().getFullYear();
-    }
-
-    if (modified) {
-        modified.textContent = document.lastModified;
-    }
-}
-
-/* -------------------------
    RUN APP
 -------------------------- */
 init();
-setFooter();
