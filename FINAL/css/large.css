@@ -1,104 +1,45 @@
-@media screen and (min-width: 768px) {
-
-    /* Header Layout */
-    header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-wrap: nowrap;
+/* ===== LARGE SCREEN OVERRIDES ===== */
+@media (min-width: 1024px) {
+    /* Navigation already handled in base.css */
+    
+    .logo-container h1 {
+        font-size: 1.4rem;
     }
 
-    #menuButton {
-        display: none;
+    .logo-container p {
+        font-size: 0.8rem;
     }
 
-    #mainNav {
-        display: block !important;
-        width: auto;
+    main {
+        padding: 2rem;
     }
 
-    #mainNav ul {
-        display: flex;
-        gap: 0.5rem;
-        padding: 0;
+    section h2 {
+        font-size: 2rem;
     }
 
-    #mainNav li {
-        margin: 0;
+    .hero-content {
+        padding: 3rem 2.5rem;
     }
 
-    #mainNav a {
-        padding: 0.5rem 1rem;
-        border-radius: 4px;
+    .hero-content h2 {
+        font-size: 2.8rem;
     }
 
-    /* Card Layout - 3 columns */
-    .card-container {
-        grid-template-columns: repeat(3, 1fr);
+    .hero-content p {
+        font-size: 1.1rem;
     }
 
-    /* Tool Grid - responsive columns */
-    .tool-grid {
-        grid-template-columns: repeat(2, 1fr);
+    form {
+        padding: 2.5rem;
     }
 
-    /* Form max width */
-    .student-form form {
-        max-width: 700px;
-    }
-
-    /* Hero image */
-    .hero img {
-        max-height: 450px;
-    }
-
-    /* Filter buttons */
     .filter-buttons {
         gap: 0.75rem;
     }
 
-    /* Engine container */
-    #engineContainer {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    /* Data display */
-    .data-display {
-        padding: 2.5rem;
-    }
-}
-
-@media screen and (min-width: 1024px) {
-
-    /* Tool Grid - 3 columns on large screens */
-    .tool-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-
-    /* Engine Container - 3 columns */
-    #engineContainer {
-        grid-template-columns: repeat(3, 1fr);
-    }
-
-    /* Hero image */
-    .hero img {
-        max-height: 500px;
-    }
-
-    /* Section padding */
-    section {
-        padding: 3rem 2rem;
-    }
-}
-
-@media screen and (min-width: 1200px) {
-
-    /* Tool Grid - 4 columns on extra large screens */
-    .tool-grid {
-        grid-template-columns: repeat(4, 1fr);
-    }
-
-    #engineContainer {
-        grid-template-columns: repeat(4, 1fr);
+    .filter-buttons button {
+        padding: 0.6rem 1.75rem;
+        font-size: 0.95rem;
     }
 }

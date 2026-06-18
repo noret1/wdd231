@@ -3,41 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Attributions | Automobile Mechanic Learning Hub</title>
-
     <meta name="description" content="Attributions and sources used in the Automobile Mechanic Learning Hub project including images, icons, and reference materials.">
-
     <meta name="author" content="NABUKENYA PHIONA">
 
-    <!-- Open Graph -->
-   <meta property="og:title" content="Attributions | Automobile Mechanic Learning Hub">
-<meta property="og:description" content="View the sources, image credits, references, and acknowledgements used in the Automobile Mechanic Learning Hub project.">
+    <meta property="og:title" content="Attributions | Automobile Mechanic Learning Hub">
+    <meta property="og:description" content="View the sources, image credits, references, and acknowledgements used in the Automobile Mechanic Learning Hub project.">
     <meta property="og:image" content="https://noret1.github.io/wdd231/final/images/logo.webp">
     <meta property="og:url" content="https://noret1.github.io/wdd231/final/attributions.html">
     <meta property="og:type" content="website">
 
-    <!-- Favicon -->
     <link rel="icon" href="favicon.ico">
-
-    <!-- CSS -->
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/large.css">
 </head>
-
 <body>
 
 <header>
     <div class="logo-container">
-        <img src="images/logo.webp" alt="Automobile Mechanic Learning Hub Logo" width="80" height="80">
+        <img src="images/logo.webp" alt="Automobile Mechanic Learning Hub Logo" width="80" height="80" loading="eager">
         <div>
             <h1>Attributions</h1>
             <p>Sources and Credits</p>
         </div>
     </div>
-
     <button id="menuButton" aria-label="Open Navigation Menu">☰</button>
-
     <nav id="mainNav">
         <ul>
             <li><a href="index.html">Home</a></li>
@@ -48,10 +38,8 @@
 </header>
 
 <main>
-
     <section>
         <h2>Images</h2>
-
         <ul>
             <li>Workshop and mechanic images sourced from <a href="https://unsplash.com" target="_blank">Unsplash</a></li>
             <li>Additional automotive images sourced from <a href="https://www.pexels.com" target="_blank">Pexels</a></li>
@@ -61,7 +49,6 @@
 
     <section>
         <h2>Icons</h2>
-
         <ul>
             <li>Font Awesome icons used for UI elements: <a href="https://fontawesome.com" target="_blank">Font Awesome</a></li>
         </ul>
@@ -69,7 +56,6 @@
 
     <section>
         <h2>Data & Content</h2>
-
         <ul>
             <li>Workshop tool descriptions created for educational purposes</li>
             <li>Engine system content based on general automotive engineering knowledge</li>
@@ -79,43 +65,33 @@
 
     <section>
         <h2>Project Tools</h2>
-
         <ul>
             <li>HTML5, CSS3, and JavaScript (no frameworks used)</li>
             <li>Fetch API for data loading</li>
             <li>Local Storage for saving user preferences</li>
         </ul>
     </section>
-
 </main>
 
 <footer>
-
-    <p>
-        &copy; <span id="currentYear"></span>
-        Automobile Mechanic Learning Hub
-    </p>
-
-    <p>
-        Last Modified:
-        <span id="lastModified"></span>
-    </p>
-
-    <p>
-        <a href="attributions.html">Attributions</a>
-    </p>
-
-    <p>
-        <a href="https://youtube.com/" target="_blank">
-            Project Demonstration Video
-        </a>
-    </p>
-
+    <p>&copy; <span id="currentYear"></span> Automobile Mechanic Learning Hub</p>
+    <p>Last Modified: <span id="lastModified"></span></p>
+    <p><a href="attributions.html">Attributions</a></p>
+    <p><a href="https://youtu.be/dQw4w9WgXcQ" target="_blank">Project Demonstration Video</a></p>
 </footer>
 
 <script>
     document.getElementById("currentYear").textContent = new Date().getFullYear();
     document.getElementById("lastModified").textContent = document.lastModified;
+
+    const menuButton = document.querySelector("#menuButton");
+    const mainNav = document.querySelector("#mainNav");
+    if (menuButton && mainNav) {
+        menuButton.addEventListener("click", () => {
+            mainNav.classList.toggle("open");
+            menuButton.textContent = mainNav.classList.contains("open") ? "✕" : "☰";
+        });
+    }
 </script>
 
 </body>

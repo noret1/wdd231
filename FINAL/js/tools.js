@@ -1,218 +1,205 @@
-/* -------------------------
-   DOM ELEMENTS
--------------------------- */
-const toolsContainer = document.querySelector("#toolsContainer");
-const modal = document.querySelector("#toolModal");
-const modalContent = document.querySelector("#modalContent");
-const closeModal = document.querySelector("#closeModal");
-const filterButtons = document.querySelectorAll("[data-filter]");
+import { engineSystems, workshopTools } from './data.js';
 
-/* -------------------------
-   LOCAL STORAGE
--------------------------- */
-let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+// ===== DETERMINE CURRENT PAGE =====
+const isEnginePage = document.querySelector('#engineContainer') !== null;
+const isToolsPage = document.querySelector('#toolsContainer') !== null;
 
-/* -------------------------
-   GLOBAL STATE
--------------------------- */
-let globalData = [];
+// ===== MODAL ELEMENTS =====
+const modal = document.querySelector('#toolModal');
+const modalContent = document.querySelector('#modalContent');
+const closeModal = document.querySelector('#closeModal');
 
-/* -------------------------
-   FETCH DATA
--------------------------- */
-async function getTools() {
-    try {
-        const response = await fetch("data/tools.json");
+// ===== NAVIGATION TOGGLE =====
+const menuButton = document.querySelector('#menuButton');
+const mainNav = document.querySelector('#mainNav');
 
-        if (!response.ok) {
-            throw new Error(`Failed to load tools: ${response.status}`);
-        }
-
-        const data = await response.json();
-
-        if (!Array.isArray(data) || data.length === 0) {
-            throw new Error("Tools data is empty or invalid");
-        }
-
-        globalData = data;
-
-        displayTools(globalData);
-        setupFilters();
-
-        return data;
-
-    } catch (error) {
-        console.error(error);
-
-        if (toolsContainer) {
-            toolsContainer.innerHTML =
-                `<p class="error-message">Unable to load tools. Try again later.</p>`;
-        }
-
-        return [];
-    }
-}
-
-/* -------------------------
-   DISPLAY TOOLS
--------------------------- */
-function displayTools(data) {
-    if (!toolsContainer) return;
-
-    const cards = data.map(tool => {
-        const isFavorite = favorites.includes(tool.id);
-
-        return `
-        <div class="tool-card" data-category="${tool.category.toLowerCase()}" data-id="${tool.id}">
-            <h3>${tool.name}</h3>
-            <span class="tool-tag">${tool.category}</span>
-
-            <p><strong>Price:</strong> UGX ${tool.price ? tool.price.toLocaleString() : "N/A"}</p>
-
-            <p>${tool.description ? tool.description.substring(0, 80) + "..." : ""}</p>
-
-            <div class="card-actions">
-                <button class="btn-details" data-action="view" data-id="${tool.id}">
-                    View Details
-                </button>
-
-                <button class="btn-favorite ${isFavorite ? "favorite-active" : ""}"
-                        data-action="favorite"
-                        data-id="${tool.id}">
-                    ${isFavorite ? "★" : "☆"} Favorite
-                </button>
-            </div>
-        </div>
-        `;
-    }).join("");
-
-    toolsContainer.innerHTML = cards;
-}
-
-/* -------------------------
-   FILTER SYSTEM
--------------------------- */
-function setupFilters() {
-    if (!filterButtons.length) return;
-
-    filterButtons.forEach(btn => {
-        btn.addEventListener("click", () => {
-
-            filterButtons.forEach(b => b.classList.remove("filter-active"));
-            btn.classList.add("filter-active");
-
-            const filter = btn.dataset.filter;
-
-            if (filter === "all") {
-                displayTools(globalData);
-                return;
-            }
-
-            const filtered = globalData.filter(tool =>
-                tool.category.toLowerCase() === filter.toLowerCase()
-            );
-
-            displayTools(filtered);
-        });
+if (menuButton && mainNav) {
+    menuButton.addEventListener('click', () => {
+        mainNav.classList.toggle('open');
+        menuButton.textContent = mainNav.classList.contains('open') ? '✕' : '☰';
     });
 }
 
-/* -------------------------
-   FIND TOOL
--------------------------- */
-function findTool(id) {
-    return globalData.find(t => t.id === id);
-}
+// ===== MODAL FUNCTIONS =====
+function openModal(data, type) {
+    if (!modal || !modalContent) return;
 
-/* -------------------------
-   MODAL OPEN
--------------------------- */
-function openModal(id) {
-    const tool = findTool(id);
-    if (!tool || !modal || !modalContent) return;
-
-    modalContent.innerHTML = `
-        <h2>${tool.name}</h2>
-        <p><strong>Category:</strong> ${tool.category}</p>
-        <p><strong>Price:</strong> UGX ${tool.price ? tool.price.toLocaleString() : "N/A"}</p>
-        <p><strong>Description:</strong> ${tool.description}</p>
-        <p><strong>Usage:</strong> ${tool.usage || "Not specified"}</p>
-        <p><strong>Safety:</strong> ${tool.safety || "Standard precautions apply"}</p>
-    `;
+    if (type === 'engine') {
+        modalContent.innerHTML = `
+            <h2>${data.name}</h2>
+            <p><strong>Category:</strong> ${data.category}</p>
+            <p><strong>Function:</strong> ${data.function}</p>
+            <p><strong>Components:</strong> ${data.components.join(', ')}</p>
+            <p><strong>Maintenance:</strong> ${data.maintenance}</p>
+        `;
+    } else {
+        modalContent.innerHTML = `
+            <h2>${data.name}</h2>
+            <p><strong>Category:</strong> ${data.category}</p>
+            <p><strong>Brand:</strong> ${data.brand}</p>
+            <p><strong>Description:</strong> ${data.description}</p>
+            <p class="modal-price">${data.price}</p>
+            <p><strong>Rating:</strong> ⭐ ${data.rating}/5</p>
+        `;
+    }
 
     modal.showModal();
 }
 
-/* -------------------------
-   FAVORITES
--------------------------- */
-function toggleFavorite(id) {
-    id = Number(id);
+function closeModalHandler() {
+    if (modal) modal.close();
+}
 
-    if (favorites.includes(id)) {
-        favorites = favorites.filter(f => f !== id);
-    } else {
-        favorites.push(id);
+// ===== MODAL EVENT LISTENERS =====
+if (closeModal) {
+    closeModal.addEventListener('click', closeModalHandler);
+}
+
+if (modal) {
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModalHandler();
+    });
+
+    modal.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeModalHandler();
+    });
+}
+
+// ===== ENGINE SYSTEMS PAGE =====
+function renderEngineSystems() {
+    const container = document.querySelector('#engineContainer');
+    if (!container) return;
+
+    try {
+        // Use map to generate HTML
+        container.innerHTML = engineSystems.map(system => `
+            <div class="tool-card" data-id="${system.id}" data-type="engine">
+                <span class="tool-category">${system.category}</span>
+                <h3>${system.name}</h3>
+                <p class="tool-description">${system.function}</p>
+                <p><strong>Components:</strong> ${system.components.slice(0, 3).join(', ')}${system.components.length > 3 ? '...' : ''}</p>
+            </div>
+        `).join('');
+
+        // Add click listeners
+        container.querySelectorAll('.tool-card').forEach(card => {
+            card.addEventListener('click', () => {
+                const id = parseInt(card.dataset.id);
+                const system = engineSystems.find(s => s.id === id);
+                if (system) openModal(system, 'engine');
+            });
+        });
+
+    } catch (error) {
+        console.error('Error rendering engine systems:', error);
+        container.innerHTML = '<p>Unable to load engine systems.</p>';
+    }
+}
+
+// ===== WORKSHOP TOOLS PAGE =====
+function renderWorkshopTools(filter = 'all') {
+    const container = document.querySelector('#toolsContainer');
+    if (!container) return;
+
+    try {
+        let filtered = workshopTools;
+        if (filter !== 'all') {
+            filtered = workshopTools.filter(tool => tool.category === filter);
+        }
+
+        if (filtered.length === 0) {
+            container.innerHTML = '<p>No tools found in this category.</p>';
+            return;
+        }
+
+        // Use map to generate HTML
+        container.innerHTML = filtered.map(tool => `
+            <div class="tool-card" data-id="${tool.id}" data-type="tool">
+                <span class="tool-category">${tool.category}</span>
+                <h3>${tool.name}</h3>
+                <p class="tool-description">${tool.description}</p>
+                <p class="tool-price">${tool.price}</p>
+                <p>⭐ ${tool.rating}/5</p>
+            </div>
+        `).join('');
+
+        // Add click listeners
+        container.querySelectorAll('.tool-card').forEach(card => {
+            card.addEventListener('click', () => {
+                const id = parseInt(card.dataset.id);
+                const tool = workshopTools.find(t => t.id === id);
+                if (tool) openModal(tool, 'tool');
+            });
+        });
+
+    } catch (error) {
+        console.error('Error rendering workshop tools:', error);
+        container.innerHTML = '<p>Unable to load workshop tools.</p>';
+    }
+}
+
+// ===== FILTER BUTTONS =====
+function setupFilters() {
+    const filterButtons = document.querySelectorAll('.filter-buttons button');
+    if (!filterButtons.length) return;
+
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Update active state
+            filterButtons.forEach(btn => btn.classList.remove('filter-active'));
+            button.classList.add('filter-active');
+
+            // Filter tools
+            const filter = button.dataset.filter;
+            renderWorkshopTools(filter);
+
+            // Save preference to localStorage
+            try {
+                localStorage.setItem('toolFilter', filter);
+            } catch (error) {
+                console.error('LocalStorage save error:', error);
+            }
+        });
+    });
+
+    // Load saved filter preference
+    try {
+        const savedFilter = localStorage.getItem('toolFilter');
+        if (savedFilter) {
+            const button = document.querySelector(`.filter-buttons button[data-filter="${savedFilter}"]`);
+            if (button) {
+                button.click();
+            }
+        }
+    } catch (error) {
+        console.error('LocalStorage load error:', error);
+    }
+}
+
+// ===== FOOTER DATES =====
+function setFooterDates() {
+    const yearSpan = document.getElementById('currentYear');
+    const modifiedSpan = document.getElementById('lastModified');
+
+    if (yearSpan) {
+        yearSpan.textContent = new Date().getFullYear();
     }
 
-    localStorage.setItem("favorites", JSON.stringify(favorites));
-
-    displayTools(globalData);
+    if (modifiedSpan) {
+        modifiedSpan.textContent = document.lastModified;
+    }
 }
 
-/* -------------------------
-   EVENT DELEGATION (CLEAN FIX)
--------------------------- */
-if (toolsContainer) {
-    toolsContainer.addEventListener("click", (e) => {
-        const btn = e.target.closest("button");
-        if (!btn) return;
+// ===== INITIALIZE =====
+document.addEventListener('DOMContentLoaded', () => {
+    setFooterDates();
 
-        const id = btn.dataset.id;
-        const action = btn.dataset.action;
+    if (isEnginePage) {
+        renderEngineSystems();
+    }
 
-        if (action === "view") {
-            openModal(Number(id));
-        }
-
-        if (action === "favorite") {
-            toggleFavorite(id);
-        }
-    });
-}
-
-/* -------------------------
-   CLOSE MODAL
--------------------------- */
-if (modal && closeModal) {
-    closeModal.addEventListener("click", () => modal.close());
-
-    modal.addEventListener("click", (e) => {
-        const rect = modal.getBoundingClientRect();
-
-        const inDialog =
-            e.clientX >= rect.left &&
-            e.clientX <= rect.right &&
-            e.clientY >= rect.top &&
-            e.clientY <= rect.bottom;
-
-        if (!inDialog) modal.close();
-    });
-}
-
-/* -------------------------
-   FOOTER
--------------------------- */
-function setFooter() {
-    const year = document.querySelector("#currentYear");
-    const modified = document.querySelector("#lastModified");
-
-    if (year) year.textContent = new Date().getFullYear();
-    if (modified) modified.textContent = document.lastModified;
-}
-
-/* -------------------------
-   INIT
--------------------------- */
-getTools();
-setFooter();
+    if (isToolsPage) {
+        renderWorkshopTools('all');
+        setupFilters();
+    }
+});

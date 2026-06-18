@@ -3,47 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Engine Systems | Automobile Mechanic Learning Hub</title>
-
     <meta name="description" content="Learn automobile engine systems including cooling, lubrication, fuel, ignition, and exhaust systems with practical examples and interactive content.">
-
     <meta name="author" content="NABUKENYA PHIONA">
 
-    <!-- Open Graph -->
-<meta property="og:title" content="Engine Systems | Automobile Mechanic Learning Hub">
-<meta property="og:description" content="Explore automobile engine systems including cooling, lubrication, fuel, ignition, and exhaust systems with practical learning resources.">
-    <meta property="og:image" content="https://noret1.github.io/wdd231/final/images/engine-systems.jpg"> 
+    <meta property="og:title" content="Engine Systems | Automobile Mechanic Learning Hub">
+    <meta property="og:description" content="Explore automobile engine systems including cooling, lubrication, fuel, ignition, and exhaust systems with practical learning resources.">
+    <meta property="og:image" content="https://noret1.github.io/wdd231/final/images/engine-systems.jpg">
     <meta property="og:url" content="https://noret1.github.io/wdd231/final/engine-systems.html">
     <meta property="og:type" content="website">
 
-    <!-- Favicon -->
     <link rel="icon" href="favicon.ico">
-
-    <!-- CSS -->
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/large.css">
-
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-
-    <!-- JS -->
     <script type="module" src="js/tools.js" defer></script>
 </head>
-
 <body>
 
 <header>
     <div class="logo-container">
-        <img src="images/logo.webp" alt="Automobile Mechanic Learning Hub Logo" width="80" height="80">
+        <img src="images/logo.webp" alt="Automobile Mechanic Learning Hub Logo" width="80" height="80" loading="eager">
         <div>
             <h1>Engine Systems</h1>
             <p>Automobile Mechanic Learning Hub</p>
         </div>
     </div>
-
     <button id="menuButton" aria-label="Open Navigation Menu">☰</button>
-
     <nav id="mainNav">
         <ul>
             <li><a href="index.html">Home</a></li>
@@ -54,77 +39,37 @@
 </header>
 
 <main>
-
-    <!-- HERO -->
     <section class="hero">
-       <img
-    src="images/engine-systems.jpg"
-    alt="Diagram showing different engine systems including cooling, fuel, and exhaust"
-    loading="eager"
-    width="1000"
-    height="500">
+        <img src="images/engine-systems.jpg" alt="Diagram showing different engine systems including cooling, fuel, and exhaust" loading="eager" width="1000" height="500">
         <div class="hero-content">
             <h2>Understand Engine Systems</h2>
-            <p>
-                Explore how different engine systems work together
-                to power modern vehicles.
-            </p>
+            <p>Explore how different engine systems work together to power modern vehicles.</p>
         </div>
     </section>
 
-    <!-- INTRO -->
     <section class="about">
         <h2>Engine Systems Overview</h2>
-
-        <p>
-            An automobile engine is made up of multiple systems that work together.
-            These include cooling, lubrication, fuel, ignition, air intake, and exhaust systems.
-            Each system plays a critical role in ensuring smooth engine performance.
-        </p>
+        <p>An automobile engine is made up of multiple systems that work together. These include cooling, lubrication, fuel, ignition, air intake, and exhaust systems. Each system plays a critical role in ensuring smooth engine performance.</p>
     </section>
 
-    <!-- SYSTEMS LIST (15+ ITEMS FROM JSON) -->
     <section class="engine-list">
         <h2>Engine System Components</h2>
-
         <div id="engineContainer" class="tool-grid">
-            <!-- JavaScript fetches and inserts 15+ engine system items here -->
+            <!-- JavaScript fetches and inserts engine system items here -->
         </div>
     </section>
 
-    <!-- MODAL -->
-    <dialog id="systemModal">
+    <dialog id="toolModal">
         <button id="closeModal" aria-label="Close Modal">✕</button>
-
-        <div id="modalContent">
-            <!-- JS dynamic content -->
-        </div>
+        <div id="modalContent"></div>
     </dialog>
-
 </main>
 
 <footer>
-
-    <p>
-        &copy; <span id="currentYear"></span>
-        Automobile Mechanic Learning Hub
-    </p>
-
-    <p>
-        Last Modified:
-        <span id="lastModified"></span>
-    </p>
-
-    <p>
-        <a href="attributions.html">Attributions</a>
-    </p>
-
-    <p>
-        <a href="https://youtube.com/" target="_blank">
-            Project Demonstration Video
-        </a>
-    </p>
-
+    <p>&copy; <span id="currentYear"></span> Automobile Mechanic Learning Hub</p>
+    <p>Last Modified: <span id="lastModified"></span></p>
+    <p><a href="attributions.html">Attributions</a></p>
+    <p><a href="https://youtu.be/dQw4w9WgXcQ" target="_blank">Project Demonstration Video</a></p>
 </footer>
 
 </body>

@@ -1,103 +1,149 @@
-// Main JavaScript for Automobile Mechanic Learning Hub
+import { workshopTools } from './data.js';
 
-// Mobile Menu Toggle
-const menuButton = document.querySelector("#menuButton");
-const mainNav = document.querySelector("#mainNav");
+// ===== DOM ELEMENTS =====
+const menuButton = document.querySelector('#menuButton');
+const mainNav = document.querySelector('#mainNav');
+const featuredContainer = document.querySelector('#featuredTools');
+const modal = document.querySelector('#toolModal');
+const modalContent = document.querySelector('#modalContent');
+const closeModal = document.querySelector('#closeModal');
 
+// ===== NAVIGATION TOGGLE =====
 if (menuButton && mainNav) {
-    menuButton.addEventListener("click", () => {
-        mainNav.classList.toggle("open");
+    menuButton.addEventListener('click', () => {
+        mainNav.classList.toggle('open');
+        menuButton.textContent = mainNav.classList.contains('open') ? '✕' : '☰';
     });
 }
 
-// Footer Dates
-const currentYear = document.querySelector("#currentYear");
-const lastModified = document.querySelector("#lastModified");
-
-if (currentYear) {
-    currentYear.textContent = new Date().getFullYear();
-}
-
-if (lastModified) {
-    lastModified.textContent = document.lastModified;
-}
-
-// Featured Tools - Load on Home Page
-async function loadFeaturedTools() {
-    const container = document.querySelector("#featuredTools");
-    if (!container) return;
+// ===== FEATURED TOOLS (3 random tools) =====
+function displayFeaturedTools() {
+    if (!featuredContainer) return;
 
     try {
-        const response = await fetch("data/tools.json");
-        
-        if (!response.ok) {
-            throw new Error("Failed to load tools data");
-        }
+        // Get 3 random tools
+        const shuffled = [...workshopTools].sort(() => 0.5 - Math.random());
+        const featured = shuffled.slice(0, 3);
 
-        const tools = await response.json();
-        
-        // Show only first 6 tools as featured
-        const featured = tools.slice(0, 6);
-        
-        // Use map and template literals
-        const cards = featured.map(tool => `
-            <div class="tool-card" data-category="${tool.category}">
+        featuredContainer.innerHTML = featured.map(tool => `
+            <div class="tool-card" data-id="${tool.id}">
+                <span class="tool-category">${tool.category}</span>
                 <h3>${tool.name}</h3>
-                <p><strong>Price:</strong> UGX ${tool.price.toLocaleString()}</p>
-                <p>${tool.description.substring(0, 60)}...</p>
-                <button onclick="window.location.href='workshop-tools.html'">View All Tools</button>
+                <p class="tool-description">${tool.description.substring(0, 60)}...</p>
+                <p class="tool-price">${tool.price}</p>
+                <p class="tool-rating">⭐ ${tool.rating}/5</p>
             </div>
-        `).join("");
+        `).join('');
 
-        container.innerHTML = cards;
+        // Add click listeners to featured tools
+        document.querySelectorAll('#featuredTools .tool-card').forEach(card => {
+            card.addEventListener('click', () => {
+                const id = parseInt(card.dataset.id);
+                const tool = workshopTools.find(t => t.id === id);
+                if (tool) openModal(tool);
+            });
+        });
 
     } catch (error) {
-        console.error("Error loading featured tools:", error);
-        container.innerHTML = `<p>Unable to load tools at this time.</p>`;
+        console.error('Error displaying featured tools:', error);
+        if (featuredContainer) {
+            featuredContainer.innerHTML = '<p>Unable to load featured tools.</p>';
+        }
     }
 }
 
-// Initialize featured tools
-loadFeaturedTools();
+// ===== MODAL FUNCTIONS =====
+function openModal(tool) {
+    if (!modal || !modalContent) return;
 
-// Modal functionality for home page
-const modal = document.querySelector("#toolModal");
-const closeModal = document.querySelector("#closeModal");
-const modalContent = document.querySelector("#modalContent");
+    modalContent.innerHTML = `
+        <h2>${tool.name}</h2>
+        <p><strong>Category:</strong> ${tool.category}</p>
+        <p><strong>Brand:</strong> ${tool.brand}</p>
+        <p><strong>Description:</strong> ${tool.description}</p>
+        <p class="modal-price">${tool.price}</p>
+        <p><strong>Rating:</strong> ⭐ ${tool.rating}/5</p>
+    `;
 
-if (closeModal && modal) {
-    closeModal.addEventListener("click", () => {
-        modal.close();
+    modal.showModal();
+}
+
+function closeModalHandler() {
+    if (modal) modal.close();
+}
+
+// ===== MODAL EVENT LISTENERS =====
+if (closeModal) {
+    closeModal.addEventListener('click', closeModalHandler);
+}
+
+if (modal) {
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModalHandler();
     });
 
-    // Close modal when clicking outside
-    modal.addEventListener("click", (e) => {
-        if (e.target === modal) {
-            modal.close();
+    modal.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeModalHandler();
+    });
+}
+
+// ===== LOCAL STORAGE: Save Visit Count =====
+function updateVisitCount() {
+    try {
+        let visits = localStorage.getItem('mechanicHubVisits');
+        visits = visits ? parseInt(visits) + 1 : 1;
+        localStorage.setItem('mechanicHubVisits', visits);
+        return visits;
+    } catch (error) {
+        console.error('LocalStorage error:', error);
+        return 0;
+    }
+}
+
+// ===== FOOTER DATES =====
+function setFooterDates() {
+    const yearSpan = document.getElementById('currentYear');
+    const modifiedSpan = document.getElementById('lastModified');
+
+    if (yearSpan) {
+        yearSpan.textContent = new Date().getFullYear();
+    }
+
+    if (modifiedSpan) {
+        modifiedSpan.textContent = document.lastModified;
+    }
+}
+
+// ===== FORM HANDLING =====
+function setupForm() {
+    const form = document.querySelector('form');
+    if (!form) return;
+
+    form.addEventListener('submit', (e) => {
+        // Form will submit normally to form-action.html
+        // We just save to localStorage as backup
+        try {
+            const formData = new FormData(form);
+            const data = {
+                fullname: formData.get('fullname'),
+                email: formData.get('email'),
+                interest: formData.get('interest'),
+                comments: formData.get('comments')
+            };
+            localStorage.setItem('formSubmission', JSON.stringify(data));
+        } catch (error) {
+            console.error('Form save error:', error);
         }
     });
 }
 
-// Function to open modal (used by dynamically created buttons)
-window.openToolModal = function(toolId) {
-    if (!modal || !modalContent) return;
-    
-    fetch("data/tools.json")
-        .then(response => response.json())
-        .then(tools => {
-            const tool = tools.find(t => t.id === toolId);
-            if (!tool) return;
+// ===== INITIALIZE =====
+document.addEventListener('DOMContentLoaded', () => {
+    setFooterDates();
+    displayFeaturedTools();
+    setupForm();
 
-            modalContent.innerHTML = `
-                <h2>${tool.name}</h2>
-                <p><strong>Category:</strong> ${tool.category}</p>
-                <p><strong>Price:</strong> UGX ${tool.price.toLocaleString()}</p>
-                <p><strong>Description:</strong> ${tool.description}</p>
-                <p><strong>Usage:</strong> ${tool.usage}</p>
-            `;
-            modal.showModal();
-        })
-        .catch(error => {
-            console.error("Error loading tool details:", error);
-        });
-};
+    // Update visit count in console (optional)
+    const visits = updateVisitCount();
+    console.log(`🚗 Mechanic Hub visits: ${visits}`);
+});
