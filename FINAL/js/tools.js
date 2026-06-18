@@ -2,8 +2,7 @@
    DOM ELEMENTS
 -------------------------- */
 const toolsContainer = document.querySelector("#toolsContainer");
-const engineContainer = document.querySelector("#engineContainer");
-const modal = document.querySelector("#toolModal") || document.querySelector("#systemModal");
+const modal = document.querySelector("#toolModal");
 const modalContent = document.querySelector("#modalContent");
 const closeModal = document.querySelector("#closeModal");
 const filterButtons = document.querySelectorAll("[data-filter]");
@@ -14,206 +13,206 @@ const filterButtons = document.querySelectorAll("[data-filter]");
 let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
 
 /* -------------------------
-   FETCH TOOLS DATA - with try/catch
+   GLOBAL STATE
+-------------------------- */
+let globalData = [];
+
+/* -------------------------
+   FETCH DATA
 -------------------------- */
 async function getTools() {
     try {
         const response = await fetch("data/tools.json");
 
         if (!response.ok) {
-            throw new Error(`Failed to load tools data: ${response.status}`);
+            throw new Error(`Failed to load tools: ${response.status}`);
         }
 
         const data = await response.json();
 
-        // Validate data has items
-        if (!data || data.length === 0) {
-            throw new Error("No tools data available");
+        if (!Array.isArray(data) || data.length === 0) {
+            throw new Error("Tools data is empty or invalid");
         }
 
-        displayTools(data);
-        setupFilters(data);
+        globalData = data;
+
+        displayTools(globalData);
+        setupFilters();
 
         return data;
 
     } catch (error) {
-        console.error("Error fetching tools:", error);
-        // Show error message to user
+        console.error(error);
+
         if (toolsContainer) {
-            toolsContainer.innerHTML = `<p class="error-message">Unable to load tools. Please try again later.</p>`;
+            toolsContainer.innerHTML =
+                `<p class="error-message">Unable to load tools. Try again later.</p>`;
         }
-        if (engineContainer) {
-            engineContainer.innerHTML = `<p class="error-message">Unable to load engine systems. Please try again later.</p>`;
-        }
+
         return [];
     }
 }
 
 /* -------------------------
-   DISPLAY TOOLS (MAP METHOD)
+   DISPLAY TOOLS
 -------------------------- */
 function displayTools(data) {
-    // Ensure data is an array
-    const toolsData = Array.isArray(data) ? data : [];
+    if (!toolsContainer) return;
 
-    // Use map to create cards
-    const cards = toolsData.map(tool => {
+    const cards = data.map(tool => {
         const isFavorite = favorites.includes(tool.id);
+
         return `
-        <div class="tool-card" data-category="${tool.category}">
+        <div class="tool-card" data-category="${tool.category.toLowerCase()}" data-id="${tool.id}">
             <h3>${tool.name}</h3>
             <span class="tool-tag">${tool.category}</span>
-            <p><strong>Price:</strong> UGX ${tool.price ? tool.price.toLocaleString() : 'N/A'}</p>
-            <p>${tool.description ? tool.description.substring(0, 80) + '...' : ''}</p>
+
+            <p><strong>Price:</strong> UGX ${tool.price ? tool.price.toLocaleString() : "N/A"}</p>
+
+            <p>${tool.description ? tool.description.substring(0, 80) + "..." : ""}</p>
+
             <div class="card-actions">
-                <button onclick="openModal(${tool.id})" class="btn-details">
+                <button class="btn-details" data-action="view" data-id="${tool.id}">
                     View Details
                 </button>
-                <button onclick="saveFavorite(${tool.id})" class="btn-favorite ${isFavorite ? 'favorite-active' : ''}">
-                    ${isFavorite ? '★' : '☆'} Favorite
+
+                <button class="btn-favorite ${isFavorite ? "favorite-active" : ""}"
+                        data-action="favorite"
+                        data-id="${tool.id}">
+                    ${isFavorite ? "★" : "☆"} Favorite
                 </button>
             </div>
         </div>
         `;
     }).join("");
 
-    // Update containers
-    if (toolsContainer) {
-        toolsContainer.innerHTML = cards.length ? cards : '<p>No tools available</p>';
-    }
-
-    if (engineContainer) {
-        engineContainer.innerHTML = cards.length ? cards : '<p>No engine systems available</p>';
-    }
+    toolsContainer.innerHTML = cards;
 }
 
 /* -------------------------
-   FILTER SYSTEM (FILTER METHOD)
+   FILTER SYSTEM
 -------------------------- */
-function setupFilters(data) {
+function setupFilters() {
     if (!filterButtons.length) return;
 
-    filterButtons.forEach(button => {
-        button.addEventListener("click", () => {
-            // Remove active class from all buttons
-            filterButtons.forEach(btn => btn.classList.remove("filter-active"));
-            button.classList.add("filter-active");
+    filterButtons.forEach(btn => {
+        btn.addEventListener("click", () => {
 
-            const filter = button.dataset.filter;
-            let filteredData = data;
+            filterButtons.forEach(b => b.classList.remove("filter-active"));
+            btn.classList.add("filter-active");
 
-            if (filter !== "all") {
-                // Use filter method
-                filteredData = data.filter(tool => tool.category === filter);
+            const filter = btn.dataset.filter;
+
+            if (filter === "all") {
+                displayTools(globalData);
+                return;
             }
 
-            displayTools(filteredData);
+            const filtered = globalData.filter(tool =>
+                tool.category.toLowerCase() === filter.toLowerCase()
+            );
+
+            displayTools(filtered);
         });
     });
 }
 
 /* -------------------------
-   FIND TOOL BY ID (FIND METHOD)
+   FIND TOOL
 -------------------------- */
-function findToolById(id, data) {
-    // Use find method
-    return data.find(tool => tool.id === id);
+function findTool(id) {
+    return globalData.find(t => t.id === id);
 }
 
 /* -------------------------
-   MODAL HANDLING
+   MODAL OPEN
 -------------------------- */
-let globalData = [];
-
 function openModal(id) {
-    // Use find method
-    const tool = globalData.find(item => item.id === id);
-
+    const tool = findTool(id);
     if (!tool || !modal || !modalContent) return;
 
-    // Use template literals
     modalContent.innerHTML = `
         <h2>${tool.name}</h2>
         <p><strong>Category:</strong> ${tool.category}</p>
-        <p><strong>Price:</strong> UGX ${tool.price ? tool.price.toLocaleString() : 'N/A'}</p>
+        <p><strong>Price:</strong> UGX ${tool.price ? tool.price.toLocaleString() : "N/A"}</p>
         <p><strong>Description:</strong> ${tool.description}</p>
-        <p><strong>Usage:</strong> ${tool.usage}</p>
-        <p><strong>Safety:</strong> ${tool.safety || 'Standard safety precautions apply'}</p>
+        <p><strong>Usage:</strong> ${tool.usage || "Not specified"}</p>
+        <p><strong>Safety:</strong> ${tool.safety || "Standard precautions apply"}</p>
     `;
 
     modal.showModal();
 }
 
-// Make openModal globally accessible
-window.openModal = openModal;
+/* -------------------------
+   FAVORITES
+-------------------------- */
+function toggleFavorite(id) {
+    id = Number(id);
+
+    if (favorites.includes(id)) {
+        favorites = favorites.filter(f => f !== id);
+    } else {
+        favorites.push(id);
+    }
+
+    localStorage.setItem("favorites", JSON.stringify(favorites));
+
+    displayTools(globalData);
+}
 
 /* -------------------------
-   CLOSE MODAL
+   EVENT DELEGATION (CLEAN FIX)
 -------------------------- */
-if (closeModal && modal) {
-    closeModal.addEventListener("click", () => {
-        modal.close();
-    });
+if (toolsContainer) {
+    toolsContainer.addEventListener("click", (e) => {
+        const btn = e.target.closest("button");
+        if (!btn) return;
 
-    // Close on backdrop click
-    modal.addEventListener("click", (e) => {
-        if (e.target === modal) {
-            modal.close();
+        const id = btn.dataset.id;
+        const action = btn.dataset.action;
+
+        if (action === "view") {
+            openModal(Number(id));
+        }
+
+        if (action === "favorite") {
+            toggleFavorite(id);
         }
     });
 }
 
 /* -------------------------
-   FAVORITES (LOCAL STORAGE)
+   CLOSE MODAL
 -------------------------- */
-function saveFavorite(id) {
-    if (!favorites.includes(id)) {
-        favorites.push(id);
-    } else {
-        favorites = favorites.filter(fav => fav !== id);
-    }
+if (modal && closeModal) {
+    closeModal.addEventListener("click", () => modal.close());
 
-    localStorage.setItem("favorites", JSON.stringify(favorites));
+    modal.addEventListener("click", (e) => {
+        const rect = modal.getBoundingClientRect();
 
-    // Refresh display to update favorite buttons
-    if (globalData.length) {
-        displayTools(globalData);
-    }
-}
+        const inDialog =
+            e.clientX >= rect.left &&
+            e.clientX <= rect.right &&
+            e.clientY >= rect.top &&
+            e.clientY <= rect.bottom;
 
-// Make saveFavorite globally accessible
-window.saveFavorite = saveFavorite;
-
-/* -------------------------
-   INIT DATA STORAGE
--------------------------- */
-async function init() {
-    try {
-        const data = await getTools();
-        globalData = data;
-    } catch (error) {
-        console.error("Initialization error:", error);
-    }
+        if (!inDialog) modal.close();
+    });
 }
 
 /* -------------------------
-   FOOTER DATES
+   FOOTER
 -------------------------- */
 function setFooter() {
     const year = document.querySelector("#currentYear");
     const modified = document.querySelector("#lastModified");
 
-    if (year) {
-        year.textContent = new Date().getFullYear();
-    }
-
-    if (modified) {
-        modified.textContent = document.lastModified;
-    }
+    if (year) year.textContent = new Date().getFullYear();
+    if (modified) modified.textContent = document.lastModified;
 }
 
 /* -------------------------
-   RUN APP
+   INIT
 -------------------------- */
-init();
+getTools();
 setFooter();
